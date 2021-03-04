@@ -68,11 +68,13 @@ document.addEventListener('DOMContentLoaded',() => {
     for(let i=0; i<cardArray.length;i++){
         var card= document.createElement('img')
         card.setAttribute('src','images/blank.png')//blank is a 100p X 100 px
-        car
+        card.setAttribute('data-id', i)//we have 12 cards we loop trough the array so we just have to add the card id 
+        // card.addEventListener('click',flipcard)
+        grid.appendChild(card)//it will go to the div
     }
 
     }
-
+    createboard()
 
 
 
