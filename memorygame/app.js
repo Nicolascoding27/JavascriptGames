@@ -64,6 +64,8 @@ document.addEventListener('DOMContentLoaded',() => {
 
     ]//where the cards  are going to be stored
     const grid = document.querySelector('.grid');
+    const cardsChosen=[];
+    const cardsChosenId=[];
     function createboard(){ //we're going to loop trough the array of elements
     for(let i=0; i<cardArray.length;i++){
         var card= document.createElement('img')
@@ -72,8 +74,21 @@ document.addEventListener('DOMContentLoaded',() => {
         // card.addEventListener('click',flipcard)
         grid.appendChild(card)//it will go to the div
     }
+    }
+    //check for matches
+    
+    //flip card function 
+    function flipcard(){
+        var cardId=this.getAttribute('data-id');
+        cardsChosen.push(cardArray[cardId].name);
+        cardsChosenId.push(cardId);
+        this.setAttribute('src',cardArray[cardId].img)//add an image to the card
+        if (cardsChosen.length===2){
+            setTimeout(checkForMatch,500)
+        }
 
     }
+
     createboard()
 
 
