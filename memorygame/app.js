@@ -71,23 +71,33 @@ document.addEventListener('DOMContentLoaded',() => {
         var card= document.createElement('img')
         card.setAttribute('src','images/blank.png')//blank is a 100p X 100 px
         card.setAttribute('data-id', i)//we have 12 cards we loop trough the array so we just have to add the card id 
-        // card.addEventListener('click',flipcard)
+        card.addEventListener('click',flipcard)
         grid.appendChild(card)//it will go to the div
     }
     }
     //check for matches
-    
+    function checkForMatch(){
+        var cards = document.querySelectorAll('img')
+        const optionOneId=cardsChosenId[0];
+        const optionTwoId= cardsChosen[1];
+        if ((cardChosen[0]===cardChosen[1])){
+            alert('You found a match')
+            cards[optionOneId].setAttribute('src','images/white.png')
+        }
+    }
     //flip card function 
     function flipcard(){
-        var cardId=this.getAttribute('data-id');
+        let cardId = this.getAttribute('data-id');//this reffers to the scoope of the function createboard()
         cardsChosen.push(cardArray[cardId].name);
         cardsChosenId.push(cardId);
+        const self =this;
+        console.log(this)
         this.setAttribute('src',cardArray[cardId].img)//add an image to the card
-        if (cardsChosen.length===2){
-            setTimeout(checkForMatch,500)
-        }
-
+        // if (cardsChosen.length===2){
+        //     setTimeout(checkForMatch,500)
+        // 
     }
+
 
     createboard()
 
