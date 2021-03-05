@@ -1,8 +1,8 @@
 //first select all the div with square 
 const square=document.querySelectorAll('.square')
 const mole=document.querySelectorAll('.mole')
-const timeLeft=document.querySelectorAll('#time');
-const score=document.querySelectorAll('#score');
+const timeLeft=document.querySelector('#time');
+let score=document.querySelector('#score');
 let result=0;
 let currentTime=timeLeft.textContent
 function RandomSquare(){ //place the mole in a random square
