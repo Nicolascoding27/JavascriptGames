@@ -58,14 +58,12 @@ document.addEventListener('DOMContentLoaded',() => {
        {
         name:'pizza',
         img:'images/pizza.png'
-
        } 
-
 
     ]//where the cards  are going to be stored
     const grid = document.querySelector('.grid');
-    const cardsChosen=[];
-    const cardsChosenId=[];
+    let cardsChosen=[];
+    let cardsChosenId=[];
     const cardswon=[];
     function createboard(){ //we're going to loop trough the array of elements
     for(let i=0; i<cardArray.length;i++){
@@ -81,11 +79,11 @@ document.addEventListener('DOMContentLoaded',() => {
         var cards = document.querySelectorAll('img')//I gotta set the attribute to the images
         const optionOneId=cardsChosenId[0];
         const optionTwoId= cardsChosenId[1];
-        if ((cardChosen[0]===cardChosen[1])){
+        if ((cardsChosen[0]===cardsChosen[1])){
             alert('You found a match')
             cards[optionOneId].setAttribute('src','images/white.png')
             cards[optionTwoId].setAttribute('src','images/white.png') 
-            cardswon.push(cardsChosen) 
+            cardswon.push(cardsChosen);
         }
         else{
             alert("keep trying")
@@ -93,25 +91,20 @@ document.addEventListener('DOMContentLoaded',() => {
             cards[optionTwoId].setAttribute('src','images/white.png')
         }
         cardsChosen=[];
-
+        cardsChosenId=[];
     }
     //flip card function 
     function flipcard(){
         let cardId = this.getAttribute('data-id');//this reffers to the scoope of the function createboard()
         cardsChosen.push(cardArray[cardId].name);
         cardsChosenId.push(cardId);
-        const self =this;
-        console.log(this)
+        // const self =this;
+        // console.log(this)
         this.setAttribute('src',cardArray[cardId].img)//add an image to the card
         if (cardsChosen.length===2){
-            setTimeout(checkForMatch,500) // when the user selects 2 cards we use the check for match fucntion 
-        
+            setTimeout(checkForMatch,500) // when the user selects 2 cards we use the check for match fucntion  
     }
+}
 
-
-    createboard()
-
-
-
-
-})
+    createboard();
+});
