@@ -1,0 +1,19 @@
+/* visual grid creation */
+.square{
+    width:200px;
+    height: 200px;
+    border-style: solid;
+    border-color:navy;
+}
+.grid{
+    display: flex;
+    flex-flow:row wrap;
+    justify-content: center;
+    align-content: center;
+    width: 638px;
+    height:638px;
+}
+.mole{
+    background-image:url('https://github.com/kubowania/whack-a-mole/blob/master/mole.jpg?raw=true') ;
+    background-size: cover;
+}
