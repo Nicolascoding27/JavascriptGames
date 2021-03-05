@@ -66,6 +66,7 @@ document.addEventListener('DOMContentLoaded',() => {
     const grid = document.querySelector('.grid');
     const cardsChosen=[];
     const cardsChosenId=[];
+    const cardswon=[];
     function createboard(){ //we're going to loop trough the array of elements
     for(let i=0; i<cardArray.length;i++){
         var card= document.createElement('img')
@@ -77,13 +78,22 @@ document.addEventListener('DOMContentLoaded',() => {
     }
     //check for matches
     function checkForMatch(){
-        var cards = document.querySelectorAll('img')
+        var cards = document.querySelectorAll('img')//I gotta set the attribute to the images
         const optionOneId=cardsChosenId[0];
-        const optionTwoId= cardsChosen[1];
+        const optionTwoId= cardsChosenId[1];
         if ((cardChosen[0]===cardChosen[1])){
             alert('You found a match')
             cards[optionOneId].setAttribute('src','images/white.png')
+            cards[optionTwoId].setAttribute('src','images/white.png') 
+            cardswon.push(cardsChosen) 
         }
+        else{
+            alert("keep trying")
+            cards[optionOneId].setAttribute('src','images/white.png')
+            cards[optionTwoId].setAttribute('src','images/white.png')
+        }
+        cardsChosen=[];
+
     }
     //flip card function 
     function flipcard(){
@@ -93,9 +103,9 @@ document.addEventListener('DOMContentLoaded',() => {
         const self =this;
         console.log(this)
         this.setAttribute('src',cardArray[cardId].img)//add an image to the card
-        // if (cardsChosen.length===2){
-        //     setTimeout(checkForMatch,500)
-        // 
+        if (cardsChosen.length===2){
+            setTimeout(checkForMatch,500) // when the user selects 2 cards we use the check for match fucntion 
+        
     }
 
 
