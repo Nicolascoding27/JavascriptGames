@@ -62,9 +62,10 @@ document.addEventListener('DOMContentLoaded',() => {
 
     ]//where the cards  are going to be stored
     const grid = document.querySelector('.grid');
+    const resultDisplay=document.querySelector("#result");
     let cardsChosen=[];
     let cardsChosenId=[];
-    const cardswon=[];
+    let cardsWon=[];
     function createboard(){ //we're going to loop trough the array of elements
     for(let i=0; i<cardArray.length;i++){
         var card= document.createElement('img')
@@ -74,6 +75,8 @@ document.addEventListener('DOMContentLoaded',() => {
         grid.appendChild(card)//it will go to the div
     }
     }
+    //now we need to randomize our card array
+    cardArray.sort(()=> 0.5 -Math.random())
     //check for matches
     function checkForMatch(){
         var cards = document.querySelectorAll('img')//I gotta set the attribute to the images
@@ -83,15 +86,19 @@ document.addEventListener('DOMContentLoaded',() => {
             alert('You found a match')
             cards[optionOneId].setAttribute('src','images/white.png')
             cards[optionTwoId].setAttribute('src','images/white.png') 
-            cardswon.push(cardsChosen);
+            cardsWon.push(cardsChosen);
         }
         else{
             alert("keep trying")
-            cards[optionOneId].setAttribute('src','images/white.png')
-            cards[optionTwoId].setAttribute('src','images/white.png')
+            cards[optionOneId].setAttribute('src','images/blank.png')
+            cards[optionTwoId].setAttribute('src','images/blank.png')
         }
         cardsChosen=[];
         cardsChosenId=[];
+        resultDisplay.textContent =cardsWon.length
+        if (cardsWon.length === cardArray.length/2){
+            resultDisplay.textContent='COngratulations you just found them all'
+        }
     }
     //flip card function 
     function flipcard(){
