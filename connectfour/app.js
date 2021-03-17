@@ -6,7 +6,17 @@ document.addEventListener('DOMContentLoaded',() =>{
     for(let i=0;i<squares.length;i++)
     (function(index){
         squares[i].onClick= function(){
-            
+            if (squares[index+7].classList.contains('taken')){
+                if(currentplayer===1){
+                    squares[index].classList.add('taken')
+                    squares[index].classList.add('player-one')
+                    //change the player
+                    currentPlayer=2
+                    displayCurrentPlayer.innerHtml=currentplayer
+                } else if (currentPlayer===2){
+                    squares
+                }
+            }
         }
 
 
