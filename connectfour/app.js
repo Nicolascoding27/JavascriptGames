@@ -16,7 +16,12 @@ document.addEventListener('DOMContentLoaded',() =>{
                 } else if (currentPlayer===2){
                     squares[index].classList.add('taken')
                     squares[index].classList.add('player-two')
+                    //now we change to change the player 
+                    currentplayer=2
+                    displayCurrentPlayer.innerHTML=currentplayer
                 }
+                else alert('cant go there')
+
             }
         }
 
