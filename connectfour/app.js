@@ -14,7 +14,8 @@ document.addEventListener('DOMContentLoaded',() =>{
                     currentPlayer=2
                     displayCurrentPlayer.innerHtml=currentplayer
                 } else if (currentPlayer===2){
-                    squares
+                    squares[index].classList.add('taken')
+                    squares[index].classList.add('player-two')
                 }
             }
         }
